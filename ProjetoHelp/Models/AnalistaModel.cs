@@ -12,6 +12,7 @@ namespace ProjetoHelp.Models
         public EquipeModel Equipe { get; set; }
         public CargoModel Cargo { get; set; }
         public MetaModel Meta { get; set; }
+        public List<TicketModel> Tickets { get; set; }
 
         public AnalistaModel()
         {
@@ -25,6 +26,7 @@ namespace ProjetoHelp.Models
             Equipe = equipe;
             Cargo = cargo;
             Meta = cargo.MetaPadrao;
+            Tickets = new List<TicketModel>();
         }
     }
 }

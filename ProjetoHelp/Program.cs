@@ -1,5 +1,6 @@
 ﻿using ProjetoHelp.Models;
 using ProjetoHelp.Services;
+using System.Net.Http.Json;
 
 namespace ProjetoHelp
 {
@@ -8,8 +9,17 @@ namespace ProjetoHelp
         static void Main(string[] args)
         {
             MenuService menuService = new MenuService();
+            EquipeService equipeService = new EquipeService();
+            AnalistaService analistaService = new AnalistaService();
 
-            MenuService.ImprimeMenu(menuService.menuPrincipal);
+            APIService apiService = new APIService();
+
+            apiService.LerDadosAnalistas();
+
+            //Carregar dados mockados
+
+
+            MenuService.ImprimeMenu(MenuService.menuPrincipal);
         }
     }
 }

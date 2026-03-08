@@ -12,7 +12,7 @@ namespace ProjetoHelp.Services
         public static EquipeService equipeService = new EquipeService();
 
 
-        public List<MenuModel> menuPrincipal = new List<MenuModel>
+        public static List<MenuModel> menuPrincipal = new List<MenuModel>
         { new MenuModel(1, "Indicadores", MenuIndicadores),
           new MenuModel(2, "Gestão de Metas", MenuGestaoMetas),
           new MenuModel(3, "Gestão da Equipe", MenuGestaoEquipe),
@@ -128,7 +128,8 @@ namespace ProjetoHelp.Services
         //Métodos Menu Gestão da Equipe
         public static void MostrarEquipe()
         {
-            Console.WriteLine("Exibindo equipe...");
+            equipeService.MostrarEquipes();
+            ImprimeMenu(menuGestaoEquipe);
         }
         public static void EditarEquipe()
         {
@@ -175,9 +176,15 @@ namespace ProjetoHelp.Services
             {
                 Console.WriteLine($"{item.Id} - {item.Nome}");
             }
-            Console.Write("\nSelecione uma opção: ");
+            Console.Write("\nSelecione uma opção ou digite '0' para retornar ao menu principal: ");
 
             int opcao = int.Parse(Console.ReadLine());
+
+            if(opcao == 0)
+            {
+                ImprimeMenu(menuPrincipal);
+                return;
+            }
 
             MenuModel menuSelecionado = menu.FirstOrDefault(m => m.Id == opcao);
 

@@ -1,0 +1,60 @@
+Menu principal:
+
+1 - Indicadores
+2 - Gestão de Metas
+3 - Gestão da Equipe
+4 - Gestão dos Analistas
+5 - Calendário
+6 - Exportar dados
+
+Indicadores:
+
+1 - Indicadores da equipe
+ 1.1 - Indicadores da semana
+ 1.2 - Indicadores do mês
+ 1.3 - Indicadores do trimestre
+ 1.4 - Indicadores do ano
+2 - Indicadores por analista
+ 2.1 - Indicadores da semana
+ 2.2 - Indicadores do mês
+ 2.3 - Indicadores do trimestre
+ 2.4 - Indicadores do ano
+3 - Ranking da equipe
+ 3.1 - Ranking da semana
+ 3.2 - Ranking do mês
+ 3.3 - Ranking do trimestre
+ 3.4 - Ranking do ano
+
+Gestão de Metas:
+
+ 1 - Visualizar atual seleção de metas
+ 2 - Editar metas
+ 
+ 
+ Gestão da equipe:
+ 
+ 1 - Visualização geral da equipe(retorna lista de analistas, seus cargos e metas)
+ 2 - Editar Equipe
+ 
+ Gestão dos Analistas:
+ 
+ 1 - Visualizar cadastro individual de analista
+ 2 - Adicionar novo analista
+ 3 - Editar cadastro do analista
+ 4 - Excluir cadastro do analista
+ 5 - Registrar falta do analista
+ 6 - Solicitar férias do analista
+ 7 - Visualizar agenda de férias dos analistas
+ 
+ Calendário semanal:
+ 
+ 1 - Analistas disponíveis na semana
+ 2 - Agenda de feriados
+   2.1 - Feriados da semana
+   2.2 - Feriados do mês
+   2.3 - Feriados do ano
+   
+Exportar dados: 
+
+1 - Exportar tabela de feriados
+

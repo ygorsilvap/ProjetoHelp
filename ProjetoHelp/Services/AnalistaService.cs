@@ -1,4 +1,5 @@
-﻿using ProjetoHelp.Models;
+﻿using ProjetoHelp.Data;
+using ProjetoHelp.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,6 +11,10 @@ namespace ProjetoHelp.Services
         public List<AnalistaModel> analistas = new List<AnalistaModel>();
         public CargoService cargoService = new CargoService();
         public EquipeService equipeService = new EquipeService();
+
+        public APIService apiService = new APIService();
+
+        public Estados estados = new Estados();
 
         public void MostrarAnalistas()
         {
@@ -71,13 +76,17 @@ namespace ProjetoHelp.Services
             if (confirmacao.Equals("S", StringComparison.OrdinalIgnoreCase))
             {
                 analistas.Add(novoAnalista);
+
+                EquipeModel equipeAnalista = equipeService.equipes.FirstOrDefault(e => e.Nome.Equals(novoAnalista.Equipe.Nome, StringComparison.OrdinalIgnoreCase));
+                equipeAnalista.Analistas.Add(novoAnalista);
+
                 Console.WriteLine("\nAnalista cadastrado com sucesso!\n");
             }
             else
             {
                 Console.WriteLine("\nCadastro cancelado.\n");
             }
-        }   
+        }
 
         public void RemoverAnalista()
         {
@@ -94,12 +103,36 @@ namespace ProjetoHelp.Services
             Console.WriteLine($"\nTem certeza que deseja remover o analista {nome}? (S/N)");
             string resposta = Console.ReadLine();
 
-            if(resposta.Equals("s", StringComparison.OrdinalIgnoreCase))
+            if (resposta.Equals("s", StringComparison.OrdinalIgnoreCase))
             {
                 analistas.RemoveAll(a => a.Nome.Equals(nome, StringComparison.OrdinalIgnoreCase));
 
                 Console.WriteLine($"\nAnalista {nome} removido com sucesso!\n");
             }
+        }
+
+        public void ImportarDadosAnalistas(List<TicketResponseModel> json)
+        {
+            foreach (var item in json)
+            {
+                if(!analistas.Any(n => n.Nome.Equals(item.Analista)))
+                {
+                    string estado = estados.UF[new Random().Next(estados.UF.Count)];
+                    CargoModel cargo = cargoService.cargos[new Random().Next(cargoService.cargos.Count)];
+                    EquipeModel equipe = equipeService.equipes[new Random().Next(equipeService.equipes.Count)];
+
+                    analistas.Add(new AnalistaModel
+                    {
+                        Nome = item.Analista,
+                        UF = estado,
+                        Cargo = cargo,
+                        Equipe = equipe,
+                        Tickets = item.Tickets
+                    });
+                    return;
+                }
+            }
+
         }
     }
 }
