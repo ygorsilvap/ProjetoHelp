@@ -1,0 +1,370 @@
+[
+  {
+    "feriados": [
+      {
+        "data": "08/03/2026",
+        "nome": "Dia Internacional da Mulher",
+        "tipo": "ESTADUAL",
+        "uf": "AC",
+        "id": "f2b721ce-7439-4699-882a-aa784e18bd2f"
+      },
+      {
+        "data": "15/06/2026",
+        "nome": "Aniversário do Acre",
+        "tipo": "ESTADUAL",
+        "uf": "AC",
+        "id": "dc8eacbb-7d22-4b55-a0e3-e3c4f42c147c"
+      },
+      {
+        "data": "06/08/2026",
+        "nome": "Revolução Acreana",
+        "tipo": "ESTADUAL",
+        "uf": "AC",
+        "id": "307151e1-a541-43a6-a25e-b79eee604b37"
+      },
+      {
+        "data": "05/09/2026",
+        "nome": "Dia da Amazônia",
+        "tipo": "ESTADUAL",
+        "uf": "AC",
+        "id": "9ebb6c3e-db7e-492b-8515-ae906e314b54"
+      },
+      {
+        "data": "22/01/2026",
+        "nome": "Dia do Católico",
+        "tipo": "ESTADUAL",
+        "uf": "AC",
+        "id": "d6214e38-9f11-4b6a-88cf-b627e92062e6"
+      },
+      {
+        "data": "23/01/2026",
+        "nome": "Dia do Evangélico",
+        "tipo": "ESTADUAL",
+        "uf": "AC",
+        "id": "bf98072e-fbe6-4ac7-8162-b07775590b6c"
+      },
+      {
+        "data": "29/06/2026",
+        "nome": "Dia de São Pedro",
+        "tipo": "ESTADUAL",
+        "uf": "AL",
+        "id": "41062fa7-5c54-427f-a28e-63bedbb13a83"
+      },
+      {
+        "data": "16/09/2026",
+        "nome": "Emancipação de Alagoas",
+        "tipo": "ESTADUAL",
+        "uf": "AL",
+        "id": "b5c6666b-9669-492d-a0e6-86776449877c"
+      },
+      {
+        "data": "24/06/2026",
+        "nome": "Dia de São João",
+        "tipo": "ESTADUAL",
+        "uf": "AL",
+        "id": "a08b2ec1-2b5a-44c3-bbc3-0d5996c5364b"
+      },
+      {
+        "data": "30/11/2026",
+        "nome": "Dia do Evangélico",
+        "tipo": "ESTADUAL",
+        "uf": "AL",
+        "id": "cbc11e3e-9021-4640-8cd2-f0a79b7536e2"
+      },
+      {
+        "data": "19/03/2026",
+        "nome": "Dia de São José",
+        "tipo": "ESTADUAL",
+        "uf": "AP",
+        "id": "599e54f4-4d32-469a-8a2c-a6ef6475234e"
+      },
+      {
+        "data": "15/05/2026",
+        "nome": "Dia de Cabralzinho",
+        "tipo": "ESTADUAL",
+        "uf": "AP",
+        "id": "06e07c22-8d4c-4ca5-a985-94b76ed27b26"
+      },
+      {
+        "data": "13/09/2026",
+        "nome": "Aniversário da criação do ex-território federal do Amapá",
+        "tipo": "ESTADUAL",
+        "uf": "AP",
+        "id": "4a22f1d3-14c7-426e-ba13-1348c184ba3d"
+      },
+      {
+        "data": "25/07/2026",
+        "nome": "Dia de São Tiago",
+        "tipo": "ESTADUAL",
+        "uf": "AP",
+        "id": "c062bd9b-b219-4b08-9887-e20dbe2f19ff"
+      },
+      {
+        "data": "30/11/2026",
+        "nome": "Dia do Evangélico",
+        "tipo": "ESTADUAL",
+        "uf": "AP",
+        "id": "f7756c6b-3abd-4821-9c44-75643904717f"
+      },
+      {
+        "data": "05/09/2026",
+        "nome": "Aniversário do Amazonas",
+        "tipo": "ESTADUAL",
+        "uf": "AM",
+        "id": "8fb74238-e894-4e3a-a6b5-d1226f0ba3a5"
+      },
+      {
+        "data": "08/12/2026",
+        "nome": "Dia de Nossa Senhora da Conceição",
+        "tipo": "ESTADUAL",
+        "uf": "AM",
+        "id": "40f85d98-3ced-493e-b049-bbfe2127981e"
+      },
+      {
+        "data": "02/07/2026",
+        "nome": "Independência da Bahia",
+        "tipo": "ESTADUAL",
+        "uf": "BA",
+        "id": "446afd1a-b9d6-4eaf-bdd9-b648a997c698"
+      },
+      {
+        "data": "25/03/2026",
+        "nome": "Data Magna do Ceará",
+        "tipo": "ESTADUAL",
+        "uf": "CE",
+        "id": "30262062-8ecb-4606-aba0-c31514d3df97"
+      },
+      {
+        "data": "30/11/2026",
+        "nome": "Dia do Evangélico",
+        "tipo": "ESTADUAL",
+        "uf": "DF",
+        "id": "16da7039-a818-4415-9f8f-7539183da925"
+      },
+      {
+        "data": "28/04/2026",
+        "nome": "Aniversário do Estado",
+        "tipo": "ESTADUAL",
+        "uf": "ES",
+        "id": "570aada2-48b1-4592-942c-8c120bdb8cec"
+      },
+      {
+        "data": "28/07/2026",
+        "nome": "Adesão ao Império Brasileiro",
+        "tipo": "ESTADUAL",
+        "uf": "MA",
+        "id": "6922efd4-f720-4f8d-b8d8-915c146e35da"
+      },
+      {
+        "data": "11/10/2026",
+        "nome": "Aniversário do Mato Grosso do Sul",
+        "tipo": "ESTADUAL",
+        "uf": "MS",
+        "id": "cca18e74-48c3-4010-b6fe-85eeb0fdbf89"
+      },
+      {
+        "data": "15/08/2026",
+        "nome": "Adesão ao Império Brasileiro",
+        "tipo": "ESTADUAL",
+        "uf": "PA",
+        "id": "046fac96-a760-4e23-91aa-56dbfd2a40a8"
+      },
+      {
+        "data": "08/12/2026",
+        "nome": "N. Sra. Conceição",
+        "tipo": "ESTADUAL",
+        "uf": "PA",
+        "id": "2aeadfed-50f6-4838-a307-aac469b97b86"
+      },
+      {
+        "data": "05/08/2026",
+        "nome": "Fundação do Estado da Paraíba",
+        "tipo": "ESTADUAL",
+        "uf": "PB",
+        "id": "a7e218ec-d0a7-4743-b0a0-7d60d42ee75e"
+      },
+      {
+        "data": "26/07/2026",
+        "nome": "Homenagem a João Pessoa",
+        "tipo": "ESTADUAL",
+        "uf": "PB",
+        "id": "e224485b-98a6-4b0c-aff1-02020305813a"
+      },
+      {
+        "data": "24/06/2026",
+        "nome": "Dia de São João",
+        "tipo": "ESTADUAL",
+        "uf": "PE",
+        "id": "08d3290d-01e6-415a-8ef3-b8dda983c668"
+      },
+      {
+        "data": "06/03/2026",
+        "nome": "Data Magna de Pernambuco",
+        "tipo": "ESTADUAL",
+        "uf": "PE",
+        "id": "6042a8ea-c47c-4751-8ffa-64b9fc74dafd"
+      },
+      {
+        "data": "19/10/2026",
+        "nome": "Dia do Piauí",
+        "tipo": "ESTADUAL",
+        "uf": "PI",
+        "id": "569bfc1b-5916-41ff-8127-397f7a252864"
+      },
+      {
+        "data": "17/02/2026",
+        "nome": "Carnaval",
+        "tipo": "ESTADUAL",
+        "uf": "RJ",
+        "id": "941541ee-b77b-4dc3-993d-86840458e6cd"
+      },
+      {
+        "data": "23/04/2026",
+        "nome": "Dia de São Jorge",
+        "tipo": "ESTADUAL",
+        "uf": "RJ",
+        "id": "18cac416-bc57-46dc-9e46-4546fb8ab067"
+      },
+      {
+        "data": "03/10/2026",
+        "nome": "Mártires de Cunhaú e Uruaçu",
+        "tipo": "ESTADUAL",
+        "uf": "RN",
+        "id": "a6310b8d-ab77-4af1-be30-e654f54fdc09"
+      },
+      {
+        "data": "20/09/2026",
+        "nome": "Proc. República Rio Grandense",
+        "tipo": "ESTADUAL",
+        "uf": "RS",
+        "id": "b5cae63c-be86-49f7-b258-944e512c963a"
+      },
+      {
+        "data": "04/01/2026",
+        "nome": "Aniversário de Rondônia",
+        "tipo": "ESTADUAL",
+        "uf": "RO",
+        "id": "053f7a98-0268-4c9f-beb1-de638d2def82"
+      },
+      {
+        "data": "18/06/2026",
+        "nome": "Dia do Evangélico",
+        "tipo": "ESTADUAL",
+        "uf": "RO",
+        "id": "75570957-05b6-4675-b42f-19e071fd09c2"
+      },
+      {
+        "data": "05/10/2026",
+        "nome": "Aniversário de Roraima",
+        "tipo": "ESTADUAL",
+        "uf": "RR",
+        "id": "343b7170-ae4f-4470-bdb3-b3193650bd56"
+      },
+      {
+        "data": "20/11/2026",
+        "nome": "Dia da Consciência Negra",
+        "tipo": "ESTADUAL",
+        "uf": "RR",
+        "id": "dde83203-d9ad-49b8-b843-175af91af0dc"
+      },
+      {
+        "data": "11/08/2026",
+        "nome": "Dia de Santa Catarina",
+        "tipo": "ESTADUAL",
+        "uf": "SC",
+        "id": "8229e358-6f8c-4eb3-8532-85b87c80f755"
+      },
+      {
+        "data": "09/07/2026",
+        "nome": "Revolução Constitucionalista",
+        "tipo": "ESTADUAL",
+        "uf": "SP",
+        "id": "ae7d390f-aa96-4e6a-af9f-104842c5da61"
+      },
+      {
+        "data": "08/09/2026",
+        "nome": "Padroeira de Tocantins",
+        "tipo": "ESTADUAL",
+        "uf": "TO",
+        "id": "bc9589db-8f3d-4c61-9c93-9b03fde9c33c"
+      },
+      {
+        "data": "05/10/2026",
+        "nome": "Aniversário de Tocantins",
+        "tipo": "ESTADUAL",
+        "uf": "TO",
+        "id": "92226c74-edf4-4b6d-a78e-d9365f80790f"
+      },
+      {
+        "data": "20/11/2026",
+        "nome": "Consciência Negra",
+        "tipo": "NACIONAL",
+        "uf": null,
+        "id": "959c64ab-7842-4d9b-a07e-d0fb70d52f0e"
+      },
+      {
+        "data": "01/01/2026",
+        "nome": "Ano Novo",
+        "tipo": "NACIONAL",
+        "uf": null,
+        "id": "7288fa7a-c9da-4435-980f-23cf62eccd1d"
+      },
+      {
+        "data": "03/04/2026",
+        "nome": "Sexta-Feira Santa",
+        "tipo": "NACIONAL",
+        "uf": null,
+        "id": "e08a239a-90b5-4352-9fc7-1199390dc670"
+      },
+      {
+        "data": "01/05/2026",
+        "nome": "Dia do Trabalho",
+        "tipo": "NACIONAL",
+        "uf": null,
+        "id": "f5509791-f0f6-4b20-bd41-93968e4cb8fc"
+      },
+      {
+        "data": "07/09/2026",
+        "nome": "Independência do Brasil",
+        "tipo": "NACIONAL",
+        "uf": null,
+        "id": "4d8679f3-47df-460e-9a31-d6de7ab92bc4"
+      },
+      {
+        "data": "12/10/2026",
+        "nome": "Nossa Senhora Aparecida",
+        "tipo": "NACIONAL",
+        "uf": null,
+        "id": "d5c057b3-3e91-49fa-9af8-c49b5009468e"
+      },
+      {
+        "data": "02/11/2026",
+        "nome": "Dia de Finados",
+        "tipo": "NACIONAL",
+        "uf": null,
+        "id": "341d45e0-a6a3-4d62-a2a0-94f484e77352"
+      },
+      {
+        "data": "25/12/2026",
+        "nome": "Natal",
+        "tipo": "NACIONAL",
+        "uf": null,
+        "id": "0eab973c-7d5f-458c-b681-297339f5d41a"
+      },
+      {
+        "data": "21/04/2026",
+        "nome": "Dia de Tiradentes",
+        "tipo": "NACIONAL",
+        "uf": null,
+        "id": "51575417-da8f-40bc-99c0-5aff3c69409a"
+      },
+      {
+        "data": "15/11/2026",
+        "nome": "Proclamação da República",
+        "tipo": "NACIONAL",
+        "uf": null,
+        "id": "d252f0db-fd0e-48fc-b262-75acc53d8b57"
+      }
+    ]
+  }
+]
