@@ -8,8 +8,14 @@ namespace ProjetoHelp.Services
     //https://stackoverflow.com/questions/53234070/what-is-the-correct-way-of-making-a-console-menu
     public class MenuService
     {
-        public static AnalistaService analistaService = new AnalistaService();
-        public static EquipeService equipeService = new EquipeService();
+        private static AnalistaService _analistaService;
+        private static EquipeService _equipeService;
+
+        public MenuService(AnalistaService analistaService, EquipeService equipeService)
+        {
+            _analistaService = analistaService;
+            _equipeService = equipeService;
+        }
 
 
         public static List<MenuModel> menuPrincipal = new List<MenuModel>
@@ -22,12 +28,12 @@ namespace ProjetoHelp.Services
 
         public static List<MenuModel> menuIndicadores, menuGestaoMetas, menuGestaoEquipe, menuGestaoAnalistas;
 
-        public static List<MenuModel> menuPeriodoIndicadores = new List<MenuModel>
-        { new MenuModel(1, "Indicadores da semana", MostrarIndicadores),
-          new MenuModel(2, "Indicadores do mês", MostrarIndicadores),
-          new MenuModel(3, "Indicadores do trimestre", MostrarIndicadores),
-          new MenuModel(4, "Indicadores do ano", MostrarIndicadores),
-        };
+        //public static List<MenuModel> menuPeriodoIndicadores = new List<MenuModel>
+        //{ new MenuModel(1, "Indicadores da semana", MostrarIndicadores),
+        //  new MenuModel(2, "Indicadores do mês", MostrarIndicadores),
+        //  new MenuModel(3, "Indicadores do trimestre", MostrarIndicadores),
+        //  new MenuModel(4, "Indicadores do ano", MostrarIndicadores),
+        //};
 
         //Métodos Menu Principal
         public static void MenuIndicadores()
@@ -89,13 +95,15 @@ namespace ProjetoHelp.Services
         {
             Console.WriteLine("Menu Indicadores da Equipe");
 
-            ImprimeMenu(menuPeriodoIndicadores);
+            //ImprimeMenu(menuPeriodoIndicadores);
         }
         public static void MenuIndicadoresAnalista()
         {
-            Console.WriteLine("Menu Indicadores por Analista");
+            Console.WriteLine("\nMenu Indicadores por Analista");
 
-            ImprimeMenu(menuPeriodoIndicadores);
+            _analistaService.GerarIndicadoresAnalista();
+
+            //ImprimeMenu(menuPeriodoIndicadores);
         }
         public static void MenuRanking()
         {
@@ -128,7 +136,7 @@ namespace ProjetoHelp.Services
         //Métodos Menu Gestão da Equipe
         public static void MostrarEquipe()
         {
-            equipeService.MostrarEquipes();
+            _equipeService.MostrarEquipes();
             ImprimeMenu(menuGestaoEquipe);
         }
         public static void EditarEquipe()
@@ -143,17 +151,17 @@ namespace ProjetoHelp.Services
         //Métodos Menu Gestão dos Analistas
         public static void MostrarAnalistas()
         {
-            analistaService.MostrarAnalistas();
+            _analistaService.MostrarAnalistas();
             ImprimeMenu(menuGestaoAnalistas);
         }
         public static void CadastrarAnalista()
         {
-            analistaService.CadastrarAnalista();
+            _analistaService.CadastrarAnalista();
             ImprimeMenu(menuGestaoAnalistas);
         }
         public static void RemoverAnalista()
         {
-            analistaService.RemoverAnalista();
+            _analistaService.RemoverAnalista();
             ImprimeMenu(menuGestaoAnalistas);
         }
         public static void RegistrarFaltaAnalista()

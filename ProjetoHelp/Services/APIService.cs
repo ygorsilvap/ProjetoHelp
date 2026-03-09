@@ -8,19 +8,18 @@ namespace ProjetoHelp.Services
     public class APIService
     {
         
-        public async void LerDadosAnalistas()
+        public List<TicketResponseModel> LerDadosAnalistas()
         {
-            string casosEncerrados = await File.ReadAllTextAsync(@"C:\Users\ygor\source\repos\ProjetoHelp\ProjetoHelp\Data\tickets_mock_2026_.json");
+            string casosEncerrados = File.ReadAllText(@"C:\Users\ygor\source\repos\ProjetoHelp\ProjetoHelp\Data\tickets_mock_2026.json");
             
             List<TicketResponseModel> casos = System.Text.Json.JsonSerializer.Deserialize<List<TicketResponseModel>>(casosEncerrados);
 
-            AnalistaService analistaService = new AnalistaService();
-            analistaService.ImportarDadosAnalistas(casos);
+            return casos;
         }
 
-        public async void LerBaseFeriados2026()
+        public void LerBaseFeriados2026()
         {
-            string feriados = await File.ReadAllTextAsync(@"C:\Users\ygor\source\repos\ProjetoHelp\ProjetoHelp\MockData\feriados.json");
+            string feriados = File.ReadAllText(@"C:\Users\ygor\source\repos\ProjetoHelp\ProjetoHelp\Data\feriados.json");
 
             //Console.WriteLine(feriados);
         }

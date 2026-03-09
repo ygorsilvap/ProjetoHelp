@@ -9,10 +9,8 @@ namespace ProjetoHelp.Services
     {
         public List<EquipeModel> equipes = new List<EquipeModel>
         {
-            new EquipeModel("Alpha"),
             new EquipeModel("Delta"),
-            new EquipeModel("Fox"),
-            new EquipeModel("Gamma")
+            new EquipeModel("Fox")
         };
 
         public void MostrarEquipes()

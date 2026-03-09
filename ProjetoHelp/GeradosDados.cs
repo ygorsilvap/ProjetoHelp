@@ -12,73 +12,21 @@
 //    new("Rafael Gonçalves Pereira", 1.4, 65, 55)
 //};
 
-//var feriados2026 = new HashSet<DateTime>
-//{
-//    new DateTime(2026,1,1),
-//    new DateTime(2026,2,17),
-//    new DateTime(2026,4,3),
-//    new DateTime(2026,4,21),
-//    new DateTime(2026,5,1),
-//    new DateTime(2026,6,4),
-//    new DateTime(2026,9,7),
-//    new DateTime(2026,10,12),
-//    new DateTime(2026,11,2),
-//    new DateTime(2026,11,15),
-//    new DateTime(2026,12,25)
-//};
-
-//var prioridades = new[] { "Baixo", "Medio", "Alto" };
-
 //Random rand = new();
 
-//bool EhDiaUtil(DateTime data)
+//DateTime RandomDateMes(int mes)
 //{
-//    return data.DayOfWeek != DayOfWeek.Saturday &&
-//           data.DayOfWeek != DayOfWeek.Sunday &&
-//           !feriados2026.Contains(data.Date);
+//    int diasNoMes = DateTime.DaysInMonth(2026, mes);
+//    int dia = rand.Next(1, diasNoMes + 1);
+
+//    return new DateTime(2026, mes, dia);
 //}
 
-//DateTime RandomDate()
+//DateTime GerarEncerramento(DateTime abertura)
 //{
-//    DateTime date;
+//    int dias = rand.Next(1, 11); // 1 a 10 dias
 
-//    do
-//    {
-//        date = new DateTime(2026, 1, 1).AddDays(rand.Next(365));
-//    }
-//    while (!EhDiaUtil(date));
-
-//    return date;
-//}
-
-//DateTime AdicionarDiasUteis(DateTime data, int dias)
-//{
-//    int adicionados = 0;
-
-//    while (adicionados < dias)
-//    {
-//        data = data.AddDays(1);
-
-//        if (EhDiaUtil(data))
-//            adicionados++;
-//    }
-
-//    return data;
-//}
-
-//DateTime GerarEncerramento(DateTime abertura, string prioridade, double multiplicador)
-//{
-//    int diasBase = prioridade switch
-//    {
-//        "Alto" => rand.Next(0, 2),
-//        "Medio" => rand.Next(1, 4),
-//        "Baixo" => rand.Next(3, 8),
-//        _ => 2
-//    };
-
-//    int diasAjustados = (int)Math.Round(diasBase * multiplicador);
-
-//    return AdicionarDiasUteis(abertura, diasAjustados);
+//    return abertura.AddDays(dias);
 //}
 
 //int? GerarNota(bool respondeu, int probNota5)
@@ -97,33 +45,28 @@
 
 //foreach (var analista in analistas)
 //{
-//    int qtdTickets = rand.Next(50, 101);
-
 //    var tickets = new List<object>();
 
-//    for (int i = 0; i < qtdTickets; i++)
+//    for (int mes = 1; mes <= 12; mes++)
 //    {
-//        var abertura = RandomDate();
-//        var Prioridade = prioridades[rand.Next(prioridades.Length)];
+//        int qtdTicketsMes = rand.Next(50, 101);
 
-//        var encerramento = GerarEncerramento(
-//            abertura,
-//            Prioridade,
-//            analista.MultiplicadorTempo
-//        );
-
-//        bool respondeu = rand.Next(100) < analista.ProbRespostaCsat;
-
-//        tickets.Add(new
+//        for (int i = 0; i < qtdTicketsMes; i++)
 //        {
-//            Id = Guid.NewGuid(),
-//            //DataAbertura = abertura.ToString("dd/MM/yyyy"),
-//            DataAbertura = abertura,
-//            DataEncerramento = encerramento,
-//            Prioridade,
-//            RespostaCSAT = respondeu,
-//            NotaCSAT = GerarNota(respondeu, analista.ProbNota5)
-//        });
+//            var abertura = RandomDateMes(mes);
+//            var encerramento = GerarEncerramento(abertura);
+
+//            bool respondeu = rand.Next(100) < analista.ProbRespostaCsat;
+
+//            tickets.Add(new
+//            {
+//                Id = Guid.NewGuid(),
+//                DataAbertura = abertura,
+//                DataEncerramento = encerramento,
+//                RespostaCSAT = respondeu,
+//                NotaCSAT = GerarNota(respondeu, analista.ProbNota5)
+//            });
+//        }
 //    }
 
 //    resultado.Add(new
@@ -139,7 +82,7 @@
 //});
 
 //File.WriteAllText(
-//    "C:\\Users\\ygor\\source\\repos\\ProjetoHelp\\ProjetoHelp\\MockData\\tickets_mock_2026_.json",
+//    "C:\\Users\\ygor\\source\\repos\\ProjetoHelp\\ProjetoHelp\\Data\\tickets_mock_2026.json",
 //    json
 //);
 

@@ -1,4 +1,5 @@
-﻿using ProjetoHelp.Models;
+﻿using ProjetoHelp.Data;
+using ProjetoHelp.Models;
 using ProjetoHelp.Services;
 using System.Net.Http.Json;
 
@@ -8,16 +9,15 @@ namespace ProjetoHelp
     {
         static void Main(string[] args)
         {
-            MenuService menuService = new MenuService();
             EquipeService equipeService = new EquipeService();
-            AnalistaService analistaService = new AnalistaService();
-
+            CargoService cargoService = new CargoService();
             APIService apiService = new APIService();
+            AnalistaService analistaService = new AnalistaService(cargoService, equipeService, apiService);
+            MenuService menuService = new MenuService(analistaService, equipeService);
 
-            apiService.LerDadosAnalistas();
+            //Estados estados = new Estados();
 
-            //Carregar dados mockados
-
+            analistaService.ImportarDadosAnalistas();
 
             MenuService.ImprimeMenu(MenuService.menuPrincipal);
         }

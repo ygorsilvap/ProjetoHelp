@@ -17,6 +17,7 @@ namespace ProjetoHelp.Models
         public AnalistaModel()
         {
             Id = Guid.NewGuid();
+            Tickets = new List<TicketModel>();
         }
         public AnalistaModel(string nome, string uf, EquipeModel equipe, CargoModel cargo)
         {
@@ -27,6 +28,17 @@ namespace ProjetoHelp.Models
             Cargo = cargo;
             Meta = cargo.MetaPadrao;
             Tickets = new List<TicketModel>();
+        }
+
+        public AnalistaModel(string nome, string uf, EquipeModel equipe, CargoModel cargo, List<TicketModel> tickets)
+        {
+            Id = Guid.NewGuid();
+            Nome = nome;
+            UF = uf;
+            Equipe = equipe;
+            Cargo = cargo;
+            Meta = cargo.MetaPadrao;
+            Tickets = tickets;
         }
     }
 }
