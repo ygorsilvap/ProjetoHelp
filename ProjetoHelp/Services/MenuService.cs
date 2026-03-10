@@ -22,10 +22,10 @@ namespace ProjetoHelp.Services
 
         public static List<MenuModel> menuPrincipal = new List<MenuModel>
         { new MenuModel(1, "Indicadores", MenuIndicadores),
-          new MenuModel(2, "Gestão de Metas", MenuGestaoMetas),
-          new MenuModel(3, "Gestão da Equipe", MenuGestaoEquipe),
+          new MenuModel(2, "Gestão de Metas*", MenuGestaoMetas),
+          new MenuModel(3, "Gestão da Equipe*", MenuGestaoEquipe),
           new MenuModel(4, "Gestão dos Analistas", MenuGestaoAnalistas),
-          new MenuModel(3, "Agenda de feriados", AgendaFeriados)
+          new MenuModel(3, "Agenda de feriados*", AgendaFeriados)
         };
 
 
@@ -35,9 +35,9 @@ namespace ProjetoHelp.Services
             Console.WriteLine("Menu Indicadores");
 
             menuIndicadores = new List<MenuModel>
-            { new MenuModel(1, "Indicadores da equipe", MenuIndicadoresEquipe),
+            { new MenuModel(1, "Indicadores da equipe*", MenuIndicadoresEquipe),
               new MenuModel(2, "Indicadores por analista", MenuIndicadoresAnalista),
-              new MenuModel(3, "Ranking da equipe", MenuRanking)
+              new MenuModel(3, "Ranking da equipe*", MenuRanking)
             };
 
             ImprimeMenu(menuIndicadores);
@@ -47,8 +47,8 @@ namespace ProjetoHelp.Services
             Console.WriteLine("Menu Gestão de Metas");
 
             menuIndicadores = new List<MenuModel>
-            { new MenuModel(1, "Visualizar Metas Definidas", MostrarDefinicaoMetas),
-              new MenuModel(2, "Editar metas", EditarMetas)
+            { new MenuModel(1, "Visualizar Metas Definidas*", MostrarDefinicaoMetas),
+              new MenuModel(2, "Editar metas*", EditarMetas)
             };
             ImprimeMenu(menuGestaoMetas);
         }
@@ -58,8 +58,8 @@ namespace ProjetoHelp.Services
 
             menuGestaoEquipe = new List<MenuModel>
             { new MenuModel(1, "Visualizar Equipe", MostrarEquipe),
-              new MenuModel(2, "Editar Equipe", EditarEquipe),
-              new MenuModel(3, "Agenda de férias da equipe", MostrarAgendaFeriasEquipe),
+              new MenuModel(2, "Editar Equipe*", EditarEquipe),
+              new MenuModel(3, "Agenda de férias da equipe*", MostrarAgendaFeriasEquipe),
             };
 
             ImprimeMenu(menuGestaoEquipe);
@@ -72,9 +72,9 @@ namespace ProjetoHelp.Services
             { new MenuModel(1, "Visualizar Analistas", MostrarAnalistas),
               new MenuModel(2, "Cadastrar novo analista", CadastrarAnalista),
               new MenuModel(3, "Remover Cadastro", RemoverAnalista),
-              new MenuModel(4, "Registrar Falta", RegistrarFaltaAnalista),
-              new MenuModel(5, "Solicitar Férias", SolicitarFeriasAnalista),
-              new MenuModel(6, "Agenda de férias", AgendaFeriasAnalista)
+              new MenuModel(4, "Registrar Falta*", RegistrarFaltaAnalista),
+              new MenuModel(5, "Solicitar Férias*", SolicitarFeriasAnalista),
+              new MenuModel(6, "Agenda de férias*", AgendaFeriasAnalista)
             };
 
             ImprimeMenu(menuGestaoAnalistas);
@@ -104,10 +104,10 @@ namespace ProjetoHelp.Services
             Console.WriteLine("Menu Ranking da Equipe");
 
         List<MenuModel> menuPeriodoRanking = new List<MenuModel>
-        { new MenuModel(1, "Ranking da semana", MostrarIndicadores),
-          new MenuModel(2, "Ranking do mês", MostrarIndicadores),
-          new MenuModel(3, "Ranking do trimestre", MostrarIndicadores),
-          new MenuModel(4, "Ranking do ano", MostrarIndicadores),
+        { new MenuModel(1, "Ranking da semana*", MostrarIndicadores),
+          new MenuModel(2, "Ranking do mês*", MostrarIndicadores),
+          new MenuModel(3, "Ranking do trimestre*", MostrarIndicadores),
+          new MenuModel(4, "Ranking do ano*", MostrarIndicadores),
         };
 
         ImprimeMenu(menuPeriodoRanking);
@@ -178,6 +178,7 @@ namespace ProjetoHelp.Services
             {
                 Console.WriteLine($"{item.Id} - {item.Nome}");
             }
+            Console.WriteLine("Menus com '*' no final não foram implementados.");
             Console.Write("\nSelecione uma opção ou digite '0' para retornar ao menu principal: ");
 
             int opcao = int.Parse(Console.ReadLine());

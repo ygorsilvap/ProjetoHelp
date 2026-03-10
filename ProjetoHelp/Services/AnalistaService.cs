@@ -168,6 +168,8 @@ namespace ProjetoHelp.Services
             CalculaAtingimentoAnalista(analistaSelecionado, opcao);
         }
 
+        //Tornar a função mais generalista para utilizar com equipes.
+
         public void CalculaAtingimentoAnalista(AnalistaModel analista, int periodo)
         {
             MetaModel meta = analista.Meta;
@@ -196,14 +198,9 @@ namespace ProjetoHelp.Services
                     return;
             }
 
-
             List<TicketModel> ticketsPeriodo = analista.Tickets.Where(t => t.DataEncerramento >= periodoEscolhido && t.DataEncerramento <= diaAtual).ToList();
-
-
-            //Terminar cálculo de SLA, tornar a função mais generalizada para utilizar com equipes.
-            //Console.WriteLine($"\nTotal de casos encerrados no período: {(ticketsPeriodo[0].DataEncerramento - ticketsPeriodo[0].DataAbertura)}\n");
-
-            //List<TicketModel> ticketsEncerradosSLA = ticketsPeriodo.Where(t => t.DataAbertura - t.DataEncerramento).ToList();
+            List<TicketModel> ticketsSLAVencido = GetCasosSLAViolado(ticketsPeriodo);
+            //List<TicketModel> ticketsSLA = ticketsPeriodo.Where(t => t.);
 
             double atingimento = ((double)ticketsPeriodo.Count / meta.CasosEncerrados) * 100;
 
@@ -224,5 +221,49 @@ namespace ProjetoHelp.Services
             Console.WriteLine($"Taxa CSAT: {indicadoresAnalista.TaxaCSAT.ToString("F2")}%");
             Console.WriteLine($"Nota CSAT: {indicadoresAnalista.NotaCSAT}\n");
         }
+
+
+        public List<TicketModel> GetCasosSLAViolado(List<TicketModel> tickets)
+        {
+            var ticketsSLAVencido = new List<TicketModel>();
+
+            foreach(TicketModel ticket in tickets)
+            {
+                if(ticket.Prioridade.Equals("Alto", StringComparison.OrdinalIgnoreCase) && 
+                    (ticket.DataEncerramento - ticket.DataAbertura).TotalHours > 14)
+                    ticketsSLAVencido.Add(ticket);
+
+                if (ticket.Prioridade.Equals("Medio", StringComparison.OrdinalIgnoreCase) &&
+                    (ticket.DataEncerramento - ticket.DataAbertura).TotalHours > 56)
+                    ticketsSLAVencido.Add(ticket);
+
+                if (ticket.Prioridade.Equals("Baixo", StringComparison.OrdinalIgnoreCase) &&
+                    (ticket.DataEncerramento - ticket.DataAbertura).TotalHours > 88)
+                    ticketsSLAVencido.Add(ticket);
+            }
+
+            return ticketsSLAVencido;
+        }
+        public List<TicketModel> GetCasosSLANaoViolado(List<TicketModel> tickets) { 
+            var ticketsSLANaoVencido = new List<TicketModel>();
+
+            foreach (TicketModel ticket in tickets)
+            {
+                if (ticket.Prioridade.Equals("Alto", StringComparison.OrdinalIgnoreCase) &&
+                    (ticket.DataEncerramento - ticket.DataAbertura).TotalHours <= 14)
+                    ticketsSLANaoVencido.Add(ticket);
+
+                if (ticket.Prioridade.Equals("Medio", StringComparison.OrdinalIgnoreCase) &&
+                    (ticket.DataEncerramento - ticket.DataAbertura).TotalHours <= 56)
+                    ticketsSLANaoVencido.Add(ticket);
+
+                if (ticket.Prioridade.Equals("Baixo", StringComparison.OrdinalIgnoreCase) &&
+                    (ticket.DataEncerramento - ticket.DataAbertura).TotalHours <= 88)
+                    ticketsSLANaoVencido.Add(ticket);
+            }
+
+            return ticketsSLANaoVencido;
+        }
+
     }
 }

@@ -17,8 +17,9 @@ namespace ProjetoHelp
             MenuService menuService = new MenuService(analistaService, equipeService);
 
             analistaService.ImportarDadosAnalistas();
+            analistaService.GerarIndicadoresAnalista();
 
-            MenuService.ImprimeMenu(MenuService.menuPrincipal);
+            //MenuService.ImprimeMenu(MenuService.menuPrincipal);
         }
     }
 }
