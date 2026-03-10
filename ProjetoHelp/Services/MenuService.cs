@@ -11,6 +11,8 @@ namespace ProjetoHelp.Services
         private static AnalistaService _analistaService;
         private static EquipeService _equipeService;
 
+        public static List<MenuModel> menuIndicadores, menuGestaoMetas, menuGestaoEquipe, menuGestaoAnalistas;
+
         public MenuService(AnalistaService analistaService, EquipeService equipeService)
         {
             _analistaService = analistaService;
@@ -26,14 +28,6 @@ namespace ProjetoHelp.Services
           new MenuModel(3, "Agenda de feriados", AgendaFeriados)
         };
 
-        public static List<MenuModel> menuIndicadores, menuGestaoMetas, menuGestaoEquipe, menuGestaoAnalistas;
-
-        //public static List<MenuModel> menuPeriodoIndicadores = new List<MenuModel>
-        //{ new MenuModel(1, "Indicadores da semana", MostrarIndicadores),
-        //  new MenuModel(2, "Indicadores do mês", MostrarIndicadores),
-        //  new MenuModel(3, "Indicadores do trimestre", MostrarIndicadores),
-        //  new MenuModel(4, "Indicadores do ano", MostrarIndicadores),
-        //};
 
         //Métodos Menu Principal
         public static void MenuIndicadores()
@@ -103,7 +97,7 @@ namespace ProjetoHelp.Services
 
             _analistaService.GerarIndicadoresAnalista();
 
-            //ImprimeMenu(menuPeriodoIndicadores);
+            ImprimeMenu(menuIndicadores);
         }
         public static void MenuRanking()
         {

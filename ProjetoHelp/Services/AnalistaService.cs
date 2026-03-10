@@ -3,32 +3,29 @@ using ProjetoHelp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace ProjetoHelp.Services
 {
     public class AnalistaService
     {
-        private CargoService _cargoService;
-        private EquipeService _equipeService;
         private APIService _apiService;
+        private DateService _dateService;
+        private Colecoes _colecoes;
 
-        public List<AnalistaModel> analistas = new List<AnalistaModel>();
-
-        public Estados estados = new Estados();
-
-        public AnalistaService(CargoService cargoService, EquipeService equipeService, APIService apiService)
+        public AnalistaService(APIService apiService, DateService dateService, Colecoes colecoes)
         {
-            _cargoService = cargoService;
-            _equipeService = equipeService;
             _apiService = apiService;
+            _colecoes = colecoes;
+            _dateService = dateService;
         }
 
         public void MostrarAnalistas()
         {
             Console.WriteLine("\nLista de Analistas.\n");
 
-            foreach (var analista in analistas)
+            foreach (var analista in _colecoes.analistas)
             {
                 Console.WriteLine($"{analista.Nome} - {analista.UF}, {analista.Cargo.Nome}, Equipe {analista.Equipe.Nome}.\n");
             }
@@ -55,24 +52,24 @@ namespace ProjetoHelp.Services
             Console.Write("\nCargo: ");
             string cargo = Console.ReadLine();
 
-            while (string.IsNullOrEmpty(cargo) || !_cargoService.cargos.Any(c => c.Nome.Equals(cargo, StringComparison.OrdinalIgnoreCase)))
+            while (string.IsNullOrEmpty(cargo) || !_colecoes.cargos.Any(c => c.Nome.Equals(cargo, StringComparison.OrdinalIgnoreCase)))
             {
                 Console.WriteLine("\nCargo inválido. Tente novamente.\n");
                 Console.Write("Cargo: ");
                 cargo = Console.ReadLine();
             }
-            novoAnalista.Cargo = _cargoService.cargos.FirstOrDefault(c => c.Nome.Equals(cargo, StringComparison.OrdinalIgnoreCase));
+            novoAnalista.Cargo = _colecoes.cargos.FirstOrDefault(c => c.Nome.Equals(cargo, StringComparison.OrdinalIgnoreCase));
 
             Console.Write("\nEquipe: ");
             string equipe = Console.ReadLine();
 
-            while (string.IsNullOrEmpty(equipe) || !_equipeService.equipes.Any(e => e.Nome.Equals(equipe, StringComparison.OrdinalIgnoreCase)))
+            while (string.IsNullOrEmpty(equipe) || !_colecoes.equipes.Any(e => e.Nome.Equals(equipe, StringComparison.OrdinalIgnoreCase)))
             {
                 Console.WriteLine("\nEquipe inválida. Tente novamente.\n");
                 Console.Write("Equipe: ");
                 equipe = Console.ReadLine();
             }
-            novoAnalista.Equipe = _equipeService.equipes.FirstOrDefault(e => e.Nome.Equals(equipe, StringComparison.OrdinalIgnoreCase));
+            novoAnalista.Equipe = _colecoes.equipes.FirstOrDefault(e => e.Nome.Equals(equipe, StringComparison.OrdinalIgnoreCase));
 
             Console.WriteLine($"\nNome: {novoAnalista.Nome}");
             Console.WriteLine($"UF: {novoAnalista.UF}");
@@ -83,9 +80,9 @@ namespace ProjetoHelp.Services
 
             if (confirmacao.Equals("S", StringComparison.OrdinalIgnoreCase))
             {
-                analistas.Add(novoAnalista);
+                _colecoes.analistas.Add(novoAnalista);
 
-                EquipeModel equipeAnalista = _equipeService.equipes.FirstOrDefault(e => e.Nome.Equals(novoAnalista.Equipe.Nome, StringComparison.OrdinalIgnoreCase));
+                EquipeModel equipeAnalista = _colecoes.equipes.FirstOrDefault(e => e.Nome.Equals(novoAnalista.Equipe.Nome, StringComparison.OrdinalIgnoreCase));
                 equipeAnalista.Analistas.Add(novoAnalista);
 
                 Console.WriteLine("\nAnalista cadastrado com sucesso!\n");
@@ -101,7 +98,7 @@ namespace ProjetoHelp.Services
             Console.WriteLine("Digite o nome do analista a ser removido: ");
             string nome = Console.ReadLine();
 
-            while (string.IsNullOrEmpty(nome) || !analistas.Any(a => a.Nome.Equals(nome, StringComparison.OrdinalIgnoreCase)))
+            while (string.IsNullOrEmpty(nome) || !_colecoes.analistas.Any(a => a.Nome.Equals(nome, StringComparison.OrdinalIgnoreCase)))
             {
                 Console.WriteLine("\nAnalista não encontrado. Tente novamente.\n");
                 Console.Write("Digite o nome do analista a ser removido: ");
@@ -113,12 +110,12 @@ namespace ProjetoHelp.Services
 
             if (resposta.Equals("s", StringComparison.OrdinalIgnoreCase))
             {
-                var analistaRemovido = analistas.FirstOrDefault(a => a.Nome.Equals(nome, StringComparison.OrdinalIgnoreCase));
-                EquipeModel equipeAnalista = _equipeService.equipes.FirstOrDefault(e => e.Nome.Equals(analistaRemovido.Equipe.Nome, StringComparison.OrdinalIgnoreCase));
+                var analistaRemovido = _colecoes.analistas.FirstOrDefault(a => a.Nome.Equals(nome, StringComparison.OrdinalIgnoreCase));
+                EquipeModel equipeAnalista = _colecoes.equipes.FirstOrDefault(e => e.Nome.Equals(analistaRemovido.Equipe.Nome, StringComparison.OrdinalIgnoreCase));
 
                 //analistas.RemoveAll(a => a.Nome.Equals(nome, StringComparison.OrdinalIgnoreCase));
                 equipeAnalista.Analistas.Remove(analistaRemovido);
-                analistas.Remove(analistaRemovido);
+                _colecoes.analistas.Remove(analistaRemovido);
 
 
                 Console.WriteLine($"\nAnalista {nome} removido com sucesso!\n");
@@ -131,17 +128,17 @@ namespace ProjetoHelp.Services
 
             foreach (var item in json)
             {
-                if(!analistas.Any(n => n.Nome.Equals(item.Analista)))
+                if(!_colecoes.analistas.Any(n => n.Nome.Equals(item.Analista)))
                 {
-                    string estado = estados.UF[new Random().Next(estados.UF.Count)];
-                    CargoModel cargo = _cargoService.cargos[new Random().Next(_cargoService.cargos.Count)];
-                    EquipeModel equipe = _equipeService.equipes[new Random().Next(_equipeService.equipes.Count)];
+                    string estado = Estados.UF[new Random().Next(Estados.UF.Count)];
+                    CargoModel cargo = _colecoes.cargos[new Random().Next(_colecoes.cargos.Count)];
+                    EquipeModel equipe = _colecoes.equipes[new Random().Next(_colecoes.equipes.Count)];
 
                     AnalistaModel analista = new AnalistaModel(item.Analista, estado, equipe, cargo, item.Tickets);
 
-                    analistas.Add(analista);
+                    _colecoes.analistas.Add(analista);
 
-                    EquipeModel equipeAnalista = _equipeService.equipes.FirstOrDefault(e => e.Nome.Equals(equipe.Nome, StringComparison.OrdinalIgnoreCase));
+                    EquipeModel equipeAnalista = _colecoes.equipes.FirstOrDefault(e => e.Nome.Equals(equipe.Nome, StringComparison.OrdinalIgnoreCase));
                     equipeAnalista.Analistas.Add(analista);
                 }
             }
@@ -159,28 +156,73 @@ namespace ProjetoHelp.Services
             Console.WriteLine("Digite o nome do analista: ");
             string nome = Console.ReadLine();
 
-            while (string.IsNullOrEmpty(nome) || !analistas.Any(a => a.Nome.StartsWith(nome, StringComparison.OrdinalIgnoreCase)))
+            while (string.IsNullOrEmpty(nome) || !_colecoes.analistas.Any(a => a.Nome.StartsWith(nome, StringComparison.OrdinalIgnoreCase)))
             {
                 Console.WriteLine("\nAnalista não encontrado. Tente novamente.\n");
                 Console.Write("Digite o nome do analista: ");
                 nome = Console.ReadLine();
             }
 
-            AnalistaModel analistaSelecionado = analistas.FirstOrDefault(a => a.Nome.StartsWith(nome, StringComparison.OrdinalIgnoreCase));
+            AnalistaModel analistaSelecionado = _colecoes.analistas.FirstOrDefault(a => a.Nome.StartsWith(nome, StringComparison.OrdinalIgnoreCase));
 
-            MetaModel meta = analistaSelecionado.Meta;
+            CalculaAtingimentoAnalista(analistaSelecionado, opcao);
+        }
+
+        public void CalculaAtingimentoAnalista(AnalistaModel analista, int periodo)
+        {
+            MetaModel meta = analista.Meta;
+
+            DateTime diaAtual = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            DateTime periodoEscolhido;
+
+            switch (periodo)
+            {
+                case 1:
+                    periodoEscolhido = _dateService.IntervaloSemanal();
+                    meta.CasosEncerrados /= 4;
+                    break;
+                case 2:
+                    periodoEscolhido = _dateService.IntervaloMensal();
+                    break;
+                case 3:
+                    periodoEscolhido = _dateService.IntervaloTrimestral();
+                    meta.CasosEncerrados *= 3;
+                    break;
+                case 4:
+                    periodoEscolhido = _dateService.IntervaloAnual();
+                    meta.CasosEncerrados *= 12;
+                    break;
+                default:
+                    return;
+            }
+
+
+            List<TicketModel> ticketsPeriodo = analista.Tickets.Where(t => t.DataEncerramento >= periodoEscolhido && t.DataEncerramento <= diaAtual).ToList();
+
+
+            //Terminar cálculo de SLA, tornar a função mais generalizada para utilizar com equipes.
+            //Console.WriteLine($"\nTotal de casos encerrados no período: {(ticketsPeriodo[0].DataEncerramento - ticketsPeriodo[0].DataAbertura)}\n");
+
+            //List<TicketModel> ticketsEncerradosSLA = ticketsPeriodo.Where(t => t.DataAbertura - t.DataEncerramento).ToList();
+
+            double atingimento = ((double)ticketsPeriodo.Count / meta.CasosEncerrados) * 100;
 
             double sla = 0;
-            double taxaCSAT = (meta.TaxaCSAT / analistaSelecionado.Tickets.Where(t => t.RespostaCSAT).Count()) * 100;
-            double notaCSAT = analistaSelecionado.Tickets.Where(t => t.RespostaCSAT).Sum(t => t.NotaCSAT ?? 0) / analistaSelecionado.Tickets.Where(t => t.RespostaCSAT).Count();
 
-            MetaModel atingimento = new MetaModel(analistaSelecionado.Tickets.Count, sla, taxaCSAT, notaCSAT);
+            double taxaCSAT = (ticketsPeriodo.Where(t => t.RespostaCSAT).Count() / meta.TaxaCSAT) * 100;
 
-            Console.WriteLine($"\nIndicadores do analista {analistaSelecionado.Nome}:\n");
-            Console.WriteLine($"Casos Encerrados: {atingimento.CasosEncerrados}");
-            Console.WriteLine($"SLA: {atingimento.SLA}%");
-            Console.WriteLine($"Taxa CSAT: {atingimento.TaxaCSAT.ToString("F2")}%");
-            Console.WriteLine($"Nota CSAT: {atingimento.NotaCSAT}\n");
+            double notaCSAT = ticketsPeriodo.Where(t => t.RespostaCSAT).Count() > 1 ?
+                ticketsPeriodo.Where(t => t.RespostaCSAT).Sum(t => t.NotaCSAT ?? 1) / ticketsPeriodo.Where(t => t.RespostaCSAT).Count() : 0;
+
+            MetaModel indicadoresAnalista = new MetaModel(ticketsPeriodo.Count, sla, taxaCSAT, notaCSAT);
+
+            Console.WriteLine($"\nPeríodo: {periodoEscolhido.ToShortDateString()} - {diaAtual.ToShortDateString()}");
+
+            Console.WriteLine($"\nIndicadores do analista {analista.Nome}:\n");
+            Console.WriteLine($"Casos Encerrados: {indicadoresAnalista.CasosEncerrados}/{analista.Meta.CasosEncerrados} - {atingimento.ToString("F2")}%");
+            Console.WriteLine($"SLA: {indicadoresAnalista.SLA}%");
+            Console.WriteLine($"Taxa CSAT: {indicadoresAnalista.TaxaCSAT.ToString("F2")}%");
+            Console.WriteLine($"Nota CSAT: {indicadoresAnalista.NotaCSAT}\n");
         }
     }
 }
